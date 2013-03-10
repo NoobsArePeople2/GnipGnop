@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=480, initial-scale=0.4, maximum-scale=0.4, user-scalable=no" />
+        <script type="text/javascript">
+
+            // Set up viewport so the game fits on phones and tablets nicely-ish
+            var viewport = document.querySelector("meta[name=viewport]");
+            var w = screen.width;
+            if (w > 640) {
+                viewport.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no');
+            }
+
+        </script>
+        <link href='http://fonts.googleapis.com/css?family=Racing+Sans+One' rel='stylesheet' type='text/css'>
+
+        <script type="text/javascript" src="/lib/client/modernizr.js"></script>
+        <script type="text/javascript" data-main="lib/gnipgnop.js" src="/lib/client/require.js"></script>
+
+        <style>
+
+            /* http://meyerweb.com/eric/tools/css/reset/
+               v2.0 | 20110126
+               License: none (public domain)
+            */
+
+            html, body, div, span, applet, object, iframe,
+            h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+            a, abbr, acronym, address, big, cite, code,
+            del, dfn, em, img, ins, kbd, q, s, samp,
+            small, strike, strong, sub, sup, tt, var,
+            b, u, i, center,
+            dl, dt, dd, ol, ul, li,
+            fieldset, form, label, legend,
+            table, caption, tbody, tfoot, thead, tr, th, td,
+            article, aside, canvas, details, embed,
+            figure, figcaption, footer, header, hgroup,
+            menu, nav, output, ruby, section, summary,
+            time, mark, audio, video {
+                margin: 0;
+                padding: 0;
+                border: 0;
+                font-size: 100%;
+                font: inherit;
+                vertical-align: baseline;
+            }
+            /* HTML5 display-role reset for older browsers */
+            article, aside, details, figcaption, figure,
+            footer, header, hgroup, menu, nav, section {
+                display: block;
+            }
+            body {
+                line-height: 1;
+            }
+            ol, ul {
+                list-style: none;
+            }
+            blockquote, q {
+                quotes: none;
+            }
+            blockquote:before, blockquote:after,
+            q:before, q:after {
+                content: '';
+                content: none;
+            }
+            table {
+                border-collapse: collapse;
+                border-spacing: 0;
+            }
+
+            body {
+                text-align: center;
+                margin: 0 auto;
+                background: #D6F870;
+            }
+
+            #game_wrapper {
+                background: #333333;
+                width: 680px;
+                height: 580px;
+                margin: 12px auto 0 auto;
+                border-radius: 5px;
+            }
+
+            #canvas {
+                margin-top: 12px;
+                background-color: #333333;
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            #log {
+                width: 640px;
+                height: 200px;
+                display: none;
+            }
+
+            #score_wrapper {
+                width: 640px;
+                height: 50px;
+                margin: 12px auto 0 auto;
+            }
+
+            .score {
+                font-family: 'Racing Sans One', sans-serif;
+                font-size: 60px;
+                width: 50%;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+
+            #player_one_score {
+                color: #FF7D76;
+                float: left;
+                text-align: left;
+            }
+
+            #player_two_score {
+                color: #76DDFF;
+                float: right;
+                text-align: right;
+            }
+
+            #score_label {
+                color: #eeeeee;
+                position: absolute;
+                width: 640px;
+                text-align: center;
+
+            }
+
+            #errors {
+                background: #333333;
+                width: 640px;
+                height: 540px;
+                margin: 12px auto 0 auto;
+                border-radius: 5px;
+                display: none;
+                padding: 20px;
+            }
+
+            #errors h4 {
+                font-family: 'Racing Sans One', sans-serif;
+                font-size: 20px;
+                text-align: left;
+                color: #eeeeee;
+                display: none;
+                margin-top: 20px;
+            }
+
+            #errors h4 a {
+                color: #D6F870;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <div id="errors">
+
+            <h4 id="err_canvas">You need a browser that supports the <a href="http://caniuse.com/#search=canvas">Canvas</a> element.</h4>
+            <h4 id="err_websocket">You need a browser that supports <a href="http://caniuse.com/#search=websocke">WebSockets</a>.</h4>
+
+        </div>
+
+        <div id="game_wrapper">
+            <canvas id="canvas" width="640" height="480"></canvas>
+
+            <div id="score_wrapper">
+                <h1 id="score_label" class="score">SCORE</h1>
+                <h1 id="player_one_score" class="score">0</h1>
+                <h1 id="player_two_score" class="score">0</h1>
+            </div>
+        </div>
+
+        <textarea id="log"></textarea>
+
+    </body>
+
+</html>

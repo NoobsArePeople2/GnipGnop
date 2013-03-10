@@ -1,0 +1,21 @@
+{
+  "name": "GnipGnop",
+  "version": "0.1.0",
+  "description": "Websockets-based multiplayer table tennis in HTML5. Powered by CreateJS and Node.js.",
+  "main": "server.js",
+  "dependencies": {
+    "bison": "~1.1.1",
+    "ws": "~0.4.25",
+    "express": "~3.0.6",
+    "requirejs": "~2.1.2",
+    "optimist": "~0.3.5",
+    "signals:": "~1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "Sean Monahan",
+  "license": "MIT"
+}
