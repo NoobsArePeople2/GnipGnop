@@ -21,7 +21,7 @@ requirejs.config({
     paths: {
         gnipgnop: '../gnipgnop',
         wtf:      '../',
-        easel:    'easel.0.6.0'
+        easel:    'create'
         // tween:    'tween',
         // ease:     'ease'
     }

@@ -145,7 +145,7 @@ function( player, play_screen, debug_screen, game_time,
         } else {
             createjs.Ticker.useRAF = true;
             createjs.Ticker.setFPS(60);
-            createjs.Ticker.addListener(that);
+            createjs.Ticker.addEventListener("tick", that);
         }
 
         var tick = function () {
@@ -174,7 +174,8 @@ function( player, play_screen, debug_screen, game_time,
             MessageBuffer.sendQueue(socket, messenger);
             Input.updateKeyboards(gameTime);
         };
-        that.tick = tick;
+        // that.tick = tick;
+        that.handleEvent = tick;
         var onPing = function (data) {
             Network.onPing(data);
             // Latency.update(data);
