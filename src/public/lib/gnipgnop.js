@@ -51,7 +51,8 @@ function( Game, messenger,
           , http
           , host
           , port
-          , stage;
+          , stage
+          , enableBinary = false;
 
         stage = new createjs.Stage("canvas");
         // Snap to pixels for "snappy" performance
@@ -103,9 +104,14 @@ function( Game, messenger,
 
         socket = new WebSocket("ws://" + host + ":" + port);
         socket.isBinary = false;
-        isBinary = typeof ArrayBuffer !== 'undefined' && typeof socket.binaryType !== 'undefined' && !Modernizr.touch;
-        if (isBinary) {
-            socket.binaryType = 'arraybuffer';
+
+        if (enableBinary) {
+            isBinary = typeof ArrayBuffer !== 'undefined' && typeof socket.binaryType !== 'undefined' && !Modernizr.touch;
+            if (isBinary) {
+                socket.binaryType = 'arraybuffer';
+            }
+        } else {
+            isBinary = false;
         }
 
         socket.onopen = function () {
@@ -245,8 +251,13 @@ function( Game, messenger,
 
                     if (data[0] === true) {
                         GameInfo.log("[gnipgnop] Connection confirmed on server, socket is binary.", GameInfo.LOG_CONSOLE);
-                        socket.isBinary = true && !Modernizr.touch;
-                        socket.binaryType = 'arraybuffer';
+
+                        if (enableBinary && (true && !Modernizr.touch)) {
+                            socket.isBinary = false;
+                            socket.binaryType = 'arraybuffer';
+                        } else {
+                            socket.isBinary = false;
+                        }
                     } else {
                         GameInfo.log("[gnipgnop] Connection confirmed on server, socket is not binary.", GameInfo.LOG_CONSOLE);
                         socket.isBinary = false;
