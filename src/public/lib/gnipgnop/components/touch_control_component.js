@@ -1,17 +1,20 @@
-define(function(require) {
+// define(function(require) {
 
-    var debug_draw_component = require('../components/debug_draw_component')
-      , vector2 = require('../geom/vector2')
+//     var debug_draw_component = require('../components/debug_draw_component')
+//       , vector2 = require('../geom/vector2')
 
-      , ComponentId = require('../components/component_id')
+//       , ComponentId = require('../components/component_id')
 
-      , Input = require('../input/input')
-      , Keys  = require('../input/keys')
+//       , Input = require('../input/input')
+//       , Keys  = require('../input/keys')
 
-      , GameInfo = require('../core/game_info')
+//       , GameInfo = require('../core/game_info')
 
-      , MessageBuffer = require('../net/message_buffer')
-      , Talk          = require('../../../lib/talk.js');
+//       , MessageBuffer = require('../net/message_buffer')
+//       , Talk          = require('../../../lib/talk.js');
+
+define([ '../components/debug_draw_component', '../geom/vector2', '../components/component_id', '../input/input', '../input/keys', '../core/game_info', '../net/message_buffer', '../../../lib/talk.js' ],
+function(debug_draw_component,                 vector2,            ComponentId,                 Input,            Keys,            GameInfo,            MessageBuffer,           Talk) {
 
     var create = function (spec) {
 

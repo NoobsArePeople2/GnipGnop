@@ -1,17 +1,29 @@
-define(function(require) {
+// define(function(require) {
 
-    var talk_path = '';
-    var game_info_path = '';
-    if (typeof window === 'undefined') {
-        talk_path = "public/lib/talk";
-        game_info_path = "public/lib/gnipgnop/core/game_info"
-    } else {
-        talk_path = "/lib/talk.js";
-        game_info_path = "gnipgnop/core/game_info";
-    }
+//     var talk_path = '';
+//     var game_info_path = '';
+//     if (typeof window === 'undefined') {
+//         talk_path = "public/lib/talk";
+//         game_info_path = "public/lib/gnipgnop/core/game_info"
+//     } else {
+//         talk_path = "/lib/talk.js";
+//         game_info_path = "gnipgnop/core/game_info";
+//     }
 
-    var Talk     = require(talk_path)
-      , GameInfo = require(game_info_path);
+//     var Talk     = require(talk_path)
+//       , GameInfo = require(game_info_path);
+var talk_path = '';
+var game_info_path = '';
+if (typeof window === 'undefined') {
+    talk_path = "public/lib/talk";
+    game_info_path = "public/lib/gnipgnop/core/game_info"
+} else {
+    talk_path = "/lib/talk.js";
+    game_info_path = "gnipgnop/core/game_info";
+}
+
+define([ talk_path, game_info_path ],
+function(Talk,      GameInfo) {
 
     var create = function (spec) {
 
